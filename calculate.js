@@ -1,4 +1,13 @@
 // Author: Rafael Alejandro Belalcázar Burbano
+
+// Formula 1
+const c1 = 1.07;
+const c2 = 2.29;
+const c3 = 0;
+const c4 = 3.55;
+const permeabilidad = 1.256637061 / 1000000;
+
+// Formula 2
 const beta = 1.33 / 1000;
 const a1 = -1.21;
 const a2 = -0.163;
@@ -9,6 +18,7 @@ const micro = 1000000;
 console.log(beta, a1, a2, a3, a4, a5);
 
 var inductor = document.getElementById("result");
+var inductor2 = document.getElementById("result2");
 // var freq = document.getElementById("freq").value;
 
 // SLIDER D_OUT
@@ -87,11 +97,13 @@ function nVueltas(vueltas) {
 
 function calcInductor() {
   let d_out = parseFloat(dout.value / micro);
+  let d_in = parseFloat(din.value / micro);
   let width = parseFloat(w.value / micro);
   let vueltas = nVueltas(parseFloat(n.value));
   let spacing = parseFloat(s.value / micro);
   let freq = parseFloat(f.value / 10);
-  let omega = 2*Math.PI*freq*1000000000
+  let omega = 2 * Math.PI * freq * 1000000000;
+  let p = (d_out - d_in) / (d_out + d_in);
   var L =
     beta *
     Math.pow(d_out, a1) *
@@ -99,9 +111,18 @@ function calcInductor() {
     Math.pow(davgFinal(), a3) *
     Math.pow(vueltas, a4) *
     Math.pow(spacing, a5);
-  inductor.innerHTML = L;
-  z_in.innerHTML=L*omega
-//   console.log(L *omega);
+  // inductor.innerHTML = L*Math.pow(10,9);
+  z_in.innerHTML = L * omega;
+  
+  var L2 =
+  0.5 *
+  permeabilidad *
+  Math.pow(vueltas, 2) *
+  davgFinal() *
+  c1 *
+  (Math.log(c2 / p) + c3 * Math.pow(p, 2));
+  inductor2.innerHTML = L2*Math.pow(10,9)
+  console.log(L2);
 }
 // SLIDER s
 // var slider_s = document.getElementById("mydin");
