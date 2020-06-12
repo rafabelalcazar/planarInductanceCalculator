@@ -112,7 +112,6 @@ function calcInductor() {
     Math.pow(vueltas, a4) *
     Math.pow(spacing, a5);
   // inductor.innerHTML = L*Math.pow(10,9);
-  z_in.innerHTML = L * omega;
   
   var L2 =
   0.5 *
@@ -123,6 +122,7 @@ function calcInductor() {
   (Math.log(c2 / p) + c3 * Math.pow(p, 2));
   inductor2.innerHTML = L2*Math.pow(10,9)
   console.log(L2);
+  z_in.innerHTML = L2 * omega;
 }
 // SLIDER s
 // var slider_s = document.getElementById("mydin");
