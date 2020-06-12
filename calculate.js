@@ -91,7 +91,7 @@ function calcInductor() {
   let vueltas = nVueltas(parseFloat(n.value));
   let spacing = parseFloat(s.value / micro);
   let freq = parseFloat(f.value / 10);
-  let omega = 2*Math.PI*freq*1000000
+  let omega = 2*Math.PI*freq*1000000000
   var L =
     beta *
     Math.pow(d_out, a1) *
