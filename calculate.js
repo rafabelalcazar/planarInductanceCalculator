@@ -121,9 +121,9 @@ function calcInductor() {
     davgFinal(d_out, d_in) *
     c1 *
     (Math.log(c2 / p) + c3 * Math.pow(p, 2));
-  inductor2.innerHTML = L1 * Math.pow(10, 9);
+  inductor2.innerHTML = L1 * Math.pow(10, 9) || 'Diametro externo debe ser mayor que el interno' ;
   console.log(L1);
-  z_in.innerHTML = L1 * omega;
+  z_in.innerHTML = L1 * omega || 'Diametro externo debe ser mayor que el interno';
 
   var L2 =
     beta *
